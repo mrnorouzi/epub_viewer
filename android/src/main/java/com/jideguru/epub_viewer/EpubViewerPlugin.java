@@ -169,6 +169,7 @@ public class EpubViewerPlugin implements MethodCallHandler, FlutterPlugin, Activ
 
   @SuppressWarnings("deprecation")
   private void setLocale(Context context, Locale locale){
+    Locale.setDefault(locale);
     Resources resources = context.getResources();
     Configuration configuration = resources.getConfiguration();
     DisplayMetrics displayMetrics = resources.getDisplayMetrics();
