@@ -2,8 +2,13 @@ package com.jideguru.epub_viewer;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
+import android.util.DisplayMetrics;
 import android.util.Log;
 
+import java.util.Locale;
 import java.util.Map;
 
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
@@ -92,6 +97,7 @@ public class EpubViewerPlugin implements MethodCallHandler, FlutterPlugin, Activ
   @Override
   public void onAttachedToActivity(@NonNull ActivityPluginBinding activityPluginBinding) {
     activity = activityPluginBinding.getActivity();
+    setLocale(activity, Locale.ENGLISH);
   }
 
   @Override
@@ -158,6 +164,23 @@ public class EpubViewerPlugin implements MethodCallHandler, FlutterPlugin, Activ
 
     else {
       result.notImplemented();
+    }
+  }
+
+  @SuppressWarnings("deprecation")
+  private void setLocale(Context context, Locale locale){
+    Resources resources = context.getResources();
+    Configuration configuration = resources.getConfiguration();
+    DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1){
+      configuration.setLocale(locale);
+    } else{
+      configuration.locale=locale;
+    }
+    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N){
+      context.getApplicationContext().createConfigurationContext(configuration);
+    } else {
+      resources.updateConfiguration(configuration,displayMetrics);
     }
   }
 }
