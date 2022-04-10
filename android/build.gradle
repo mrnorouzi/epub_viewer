@@ -1,14 +1,20 @@
-group 'com.jideguru.epub_viewer'
-version '1.0'
+//group 'com.jideguru.epub_viewer'
+//version '1.0'
 
 buildscript {
+    apply from: 'versions.gradle'
     repositories {
         google()
         jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.1'
+//        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath "com.android.tools.build:gradle:$versions.androidGradlePlugin"
+
+//        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+//        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0"
     }
 }
 
@@ -19,25 +25,26 @@ rootProject.allprojects {
         maven { url "https://jitpack.io" }
     }
 }
-
-apply plugin: 'com.android.library'
-
-android {
-    compileSdkVersion 28
-
-    defaultConfig {
-        minSdkVersion 21
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-    lintOptions {
-        disable 'InvalidPackage'
-    }
-}
-
-dependencies {
-    implementation "com.jideguru:folioreader:0.6.2"
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.8'
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
-}
-
+//
+//apply plugin: 'com.android.library'
+//
+//android {
+//    compileSdkVersion 28
+//
+//    defaultConfig {
+//        minSdkVersion 21
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//    }
+//    lintOptions {
+//        disable 'InvalidPackage'
+//    }
+//}
+//
+//dependencies {
+////    implementation "com.jideguru:folioreader:0.6.2"
+//    implementation project(':folioreader')
+//    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.8'
+//    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
+//}
+//
 

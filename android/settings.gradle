@@ -1,1 +1,2 @@
+include ':folioreader', ':app'
 rootProject.name = 'epub_viewer'
