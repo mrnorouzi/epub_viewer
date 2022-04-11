@@ -1,5 +1,5 @@
-//group 'com.jideguru.epub_viewer'
-//version '1.0'
+group 'com.jideguru.epub_viewer'
+version '1.0'
 
 buildscript {
     apply from: 'versions.gradle'
@@ -25,70 +25,23 @@ rootProject.allprojects {
         maven { url "https://jitpack.io" }
     }
 }
-//
-//apply plugin: 'com.android.library'
-//
-//android {
-//    compileSdkVersion 28
-//
-//    defaultConfig {
-//        minSdkVersion 21
-//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-//    }
-//    lintOptions {
-//        disable 'InvalidPackage'
-//    }
-//}
-//
-//dependencies {
-////    implementation "com.jideguru:folioreader:0.6.2"
-//    implementation project(':folioreader')
-//    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.8'
-//    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
-//}
-//
 
-plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-}
-
-group 'com.jideguru.epub_viewer'
-version '1.0'
+apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 32
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-
     lintOptions {
         disable 'InvalidPackage'
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
     }
 }
 
 dependencies {
+//    implementation "com.jideguru:folioreader:0.6.2"
     implementation project(path: ':folioreader')
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.8'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
